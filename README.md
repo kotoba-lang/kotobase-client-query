@@ -86,11 +86,12 @@ together and looked at the wire.
 
 ## Paths
 
-`deps.edn` reaches `kotobase-client` and `org-nist-sha2` through this
-superproject's own west checkouts (`../../orgs/kotoba-lang/…`), because
+`deps.edn` reaches `kotobase-client` and `org-nist-sha2` as sibling
+checkouts (`../kotobase-client/src`, `../org-nist-sha2/src` — i.e.
+`kotoba-lang/<repo>` side by side in the github forest), because
 `kotobase-client` has no `deps.edn` by design — its consumers add its `src` to
-their own source paths. So this runs from a `west update`-populated checkout,
-not from a bare clone of the root repo alone.
+their own source paths. So this runs from a checkout with those two repos
+cloned next to it, not from a bare clone of this repo alone.
 
 Source paths live in `deps.edn`, not `shadow-cljs.edn`: shadow-cljs ignores
 the latter when `:deps` is set. It does say so, but the namespace it then
